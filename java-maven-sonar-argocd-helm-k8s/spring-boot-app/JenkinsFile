@@ -65,8 +65,8 @@ pipeline {
             git config user.email "vamsi.xyz@gmail.com"
             git config user.name "Vamshireddy"
 
-            # Replace 'replaceTag' in deployment manifest with the build number
-            sed -i "s|replaceTag|${BUILD_NUMBER}|" $MANIFEST_FILE
+            # Replace image line in deployment manifest
+            sed -i "s|image: vamshi589/springboot-image:.*|image: vamshi589/springboot-image:${BUILD_NUMBER}|" $MANIFEST_FILE
 
             git add $MANIFEST_FILE
             git commit -m "Update deployment image to version ${BUILD_NUMBER}" || echo "No changes to commit"
