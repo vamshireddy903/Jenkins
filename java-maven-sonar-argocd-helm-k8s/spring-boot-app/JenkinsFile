@@ -65,8 +65,8 @@ pipeline {
             git config user.email "vamsi.xyz@gmail.com"
             git config user.name "Vamshireddy"
 
-            # Replace the entire image line in deployment.yaml with the new image
-            sed -i "s|image:.*|image: ${DOCKER_IMAGE}|" $MANIFEST_FILE
+            # Replace 'replaceTag' in deployment manifest with the build number
+            sed -i "s|replaceTag|${BUILD_NUMBER}|" $MANIFEST_FILE
 
             git add $MANIFEST_FILE
             git commit -m "Update deployment image to version ${BUILD_NUMBER}" || echo "No changes to commit"
