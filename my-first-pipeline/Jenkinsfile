@@ -8,10 +8,5 @@ pipeline {
         sh 'node --version'
       }
     }
-    stage('Build') {
-      steps {
-        sh 'echo "Building the project..."'
-      }
-    }
   }
 }
