@@ -78,4 +78,31 @@ cd /opt/sonarqube/bin/linux-x86-64
 
 Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000` 
 
+username: admin
+pwd: admin
+
+# Authenticat sonarqube with jenkins
+
+Goto Sonarqube --- myaccount -- security
+
+![image](https://github.com/user-attachments/assets/a0057252-c599-4ad0-8e12-14e097403e93)
+
+Goto Jenkins -- manage jenkins -- credentials -- Global credentials -- Addcredentials
+
+![image](https://github.com/user-attachments/assets/88adfd43-98a2-40d5-95d6-191d804178b8)
+
+# Install minikube and kubectl
+for installation follow minikube&kubectl installation file(Installation repo)
+
+
+
+# Install argocd using operators
+
+goto this link:  https://operatorhub.io/operator/argocd-operator
+
+clik on install and do all 
+
+![image](https://github.com/user-attachments/assets/05255830-29c3-464c-974a-b17b0a20504d)
+
+
 
