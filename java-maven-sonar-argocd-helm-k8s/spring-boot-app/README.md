@@ -13,7 +13,16 @@ Checkout the repo and move to the directory
 git clone https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero/java-maven-sonar-argocd-helm-k8s/sprint-boot-app
 cd java-maven-sonar-argocd-helm-k8s/sprint-boot-app
 ```
+## Install maven
 
+          sudo apt update
+
+          sudo apt install maven -y
+
+ # Check verification
+
+          mvn -v
+ 
 Execute the Maven targets to generate the artifacts
 
 ```
