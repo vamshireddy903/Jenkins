@@ -3,16 +3,17 @@ pipeline {
   stages {
     stage('Start Back-end') {
       steps {
-        script {
-          docker.image('maven:3.8.1-adoptopenjdk-11').run('-d --name my-backend')
-        }
+        sh 'docker run -d --name my-backend maven:3.8.1-adoptopenjdk-11 tail -f /dev/null'
       }
     }
     stage('Start Front-end') {
       steps {
-        script {
-          docker.image('node:16-alpine').run('-d --name my-frontend')
-        }
+        sh 'docker run -d --name my-frontend node:16-alpine tail -f /dev/null'
+      }
+    }
+    stage('Check containers') {
+      steps {
+        sh 'docker ps'
       }
     }
   }
