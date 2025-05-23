@@ -3,24 +3,33 @@ pipeline {
   stages {
     stage('Start Back-end') {
       steps {
-        sh '''
-          docker rm -f my-backend || true
-          docker run -d --name my-backend maven:3.8.1-adoptopenjdk-11 tail -f /dev/null
-        '''
+        script {
+          // Remove container if it already exists
+          sh 'docker rm -f my-backend || true'
+          // Run back-end container
+          docker.image('maven:3.8.1-adoptopenjdk-11').run('-d --name my-backend tail -f /dev/null')
+        }
       }
     }
     stage('Start Front-end') {
       steps {
-        sh '''
-          docker rm -f my-frontend || true
-          docker run -d --name my-frontend node:16-alpine tail -f /dev/null
-        '''
+        script {
+          // Remove container if it already exists
+          sh 'docker rm -f my-frontend || true'
+          // Run front-end container
+          docker.image('node:16-alpine').run('-d --name my-frontend tail -f /dev/null')
+        }
       }
     }
-    stage('Check containers') {
-      steps {
-        sh 'docker ps'
-      }
+  }
+  post {
+    always {
+      echo 'Cleaning up containers and Docker system...'
+      sh '''
+        docker rm -f my-backend || true
+        docker rm -f my-frontend || true
+        docker system prune -f --volumes
+      '''
     }
   }
 }
