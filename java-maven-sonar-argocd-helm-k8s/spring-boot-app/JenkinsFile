@@ -5,7 +5,7 @@ pipeline {
     DOCKER_IMAGE = "vamshi589/springboot-image:${BUILD_NUMBER}"
     SONAR_URL = "http://65.1.114.65:9000/"
     GIT_REPO_NAME = "Jenkins"
-    GIT_USER_NAME = "vamshiredy903"
+    GIT_USER_NAME = "vamshireddy903"
     MANIFEST_FILE = "java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml"
   }
 
