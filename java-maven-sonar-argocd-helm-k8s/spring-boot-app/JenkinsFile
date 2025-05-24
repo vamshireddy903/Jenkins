@@ -17,7 +17,7 @@ pipeline {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        // Uncomment below if needed:
+        // Uncomment if you want to clone repo explicitly
         // git branch: 'main', url: "https://github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git"
       }
     }
@@ -47,7 +47,7 @@ pipeline {
 
     stage('Build and Push Docker Image') {
       environment {
-        REGISTRY_CREDENTIALS = credentials('docker-cred')
+        REGISTRY_CREDENTIALS = credentials('dockerhub')
       }
       steps {
         script {
